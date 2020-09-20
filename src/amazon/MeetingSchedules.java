@@ -1,4 +1,6 @@
-package hackerrrank;
+// https://www.hackerrank.com/contests/amazon/challenges/meeting-schedules
+
+package amazon;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
