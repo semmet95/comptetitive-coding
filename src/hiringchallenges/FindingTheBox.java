@@ -42,6 +42,8 @@ public class FindingTheBox {
         for(long ele: queryCopy) System.out.println(querAns.get(ele));
     }
     
+    // got this from
+    // https://www.hackerearth.com/practice/notes/inputoutput-in-javascanner-bufferedreader-self-made-fast-io/
     private static class Scan
     {
         private final byte[] buf=new byte[1024];
