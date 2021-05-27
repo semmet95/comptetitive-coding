@@ -1,25 +1,53 @@
-## reutrn number of ways to get a sum of n given an array of integers
+## https://www.hackerrank.com/challenges/lego-blocks/problem
 
+all_n = []
+all_m = []
+MOD = (10 ** 9) +7
 
+t = int(input())
 
+for _ in range(t):
+    n, m = map(int, input().split())
 
-def get_ways(n, arr):
-    num_ints = len(arr)
+    all_n.append(n)
+    all_m.append(m)
 
-    matrix = [[0] * (n+1)] * (num_ints+1)
-    for row in range(n+1):
-        matrix[row] = [0] * (n+1)
+max_n = max(all_n)
+max_m = max(all_m)
 
-    for i in range(num_ints + 1):
-        num = arr[i]
+all_walls = [0] * (max_n+1)
+solid_walls = [0] * (max_n+1)
+prev_products = [0] * (max_n+1)
 
-        for curr_sum in range(1, n+1):
-            if curr_sum < num:
-                matrix[i][curr_sum] = matrix[i-1][curr_sum]
-            else:
-                matrix[i][curr_sum] = 1 + matrix[i][curr_sum - num]
+for index in range(max_n+1):
+    all_walls[index] = [0] * (max_m+1)
+    solid_walls[index] = [0] * (max_m+1)
+    prev_products[index] = [0] * (max_m+1)
 
-    return matrix[arr[-1]][-1]
+all_walls[1][0] = 1
+all_walls[1][1] = 1
+all_walls[1][2] = 2
+all_walls[1][3] = 4
+all_walls[1][4] = 8
 
+for col in range(5, max_m+1):
+    all_walls[1][col] = sum([all_walls[1][col-x] for x in range(1, 5)]) % MOD
 
+for row in range(2, max_n+1):
+    for col in range(1, max_m+1):
+        all_walls[row][col] = (all_walls[1][col] * all_walls[row-1][col]) % MOD
 
+for row in range(1, max_n+1):
+    solid_walls[row][1] = 1
+
+for col in range(1, 5):
+    solid_walls[1][col] = 1
+
+for row, col in zip(all_n, all_m):
+
+    for col2 in range(2, col+1):
+        prev_products[row][col2] = sum([(solid_walls[row][x] * all_walls[row][col2-x]) % MOD for x in range(1, col2)]) % MOD
+
+        solid_walls[row][col2] = (all_walls[row][col2] - prev_products[row][col2] + MOD) % MOD
+    
+    print(solid_walls[row][col])
