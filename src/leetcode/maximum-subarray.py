@@ -1,3 +1,5 @@
+## https://leetcode.com/problems/maximum-subarray/
+
 class Solution:
     def maxSubArray(self, nums) -> int:
         if len(nums) == 1:
@@ -9,14 +11,13 @@ class Solution:
 
         while right < len(nums):
             window_sum += nums[right]
+            if window_sum > max_sum:
+                max_sum = window_sum
             
             if window_sum < 0:
                 if right < len(nums)-1:
                     window_sum = 0
                     #right += 1
-
-            if window_sum > max_sum:
-                max_sum = window_sum
 
             right += 1
         return max_sum

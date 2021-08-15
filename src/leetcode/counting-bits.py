@@ -1,5 +1,6 @@
 
 ## https://leetcode.com/problems/counting-bits/
+
 n = int(input())
 
 ans = [0, 1]
