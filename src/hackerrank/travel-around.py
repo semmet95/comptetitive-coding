@@ -23,7 +23,7 @@ def check_start_point_extra(i, extra_fuel, start_point):
         extra_fuel = total_fuel - b[i%N]
         i = (i+1)%N
 
-    #return check_start_point_extra((i+1)%N, total_fuel - b[i%N], start_point)
+    # return check_start_point_extra((i+1)%N, total_fuel - b[i%N], start_point)
 
 
 def check_start_point(i):
