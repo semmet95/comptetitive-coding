@@ -14,10 +14,8 @@ class Solution:
             if window_sum > max_sum:
                 max_sum = window_sum
             
-            if window_sum < 0:
-                if right < len(nums)-1:
-                    window_sum = 0
-                    #right += 1
+            if window_sum < 0 and right < len(nums)-1:
+                window_sum = 0
 
             right += 1
         return max_sum
