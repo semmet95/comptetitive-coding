@@ -1,7 +1,6 @@
 // https://www.hackerrank.com/challenges/one-month-preparation-kit-flipping-bits/problem?h_l=interview&h_r=next-challenge&h_v=zen&isFullScreen=true&playlist_slugs%5B%5D%5B%5D=preparation-kits&playlist_slugs%5B%5D%5B%5D=one-month-preparation-kit&playlist_slugs%5B%5D%5B%5D=one-month-week-one
 
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 class LonelyInteger {
